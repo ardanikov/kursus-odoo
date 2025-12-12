@@ -12,12 +12,13 @@ class Kursus(models.Model):
 class KursusSession(models.Model):
     _name = 'cdn.kursus.session'
     _description = 'Tabel Kursus Session'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(string='Nama Kursus Session', required=True)
-    kursus_id = fields.Many2one(comodel_name='cdn.kursus', string='Kursus', required=True, ondelete='cascade')
-    start_date = fields.Date(string='Tanggal Mulai', required=True)
-    duration = fields.Float(string='Durasi', required=True)
-    seats = fields.Integer(string='Jumlah Peserta', compute='_compute_jml_peserta')
+    name = fields.Char(string='Nama Kursus Session', required=True, tracking=True)
+    kursus_id = fields.Many2one(comodel_name='cdn.kursus', string='Kursus', required=True, ondelete='cascade', tracking=True)
+    start_date = fields.Date(string='Tanggal Mulai', required=True, tracking=True)
+    duration = fields.Float(string='Durasi', required=True, tracking=True)
+    seats = fields.Integer(string='Jumlah Peserta', compute='_compute_jml_peserta', tracking=True)
     peserta_ids = fields.Many2many(comodel_name='cdn.peserta', string='Peserta')
     instruktur_id = fields.Many2one(comodel_name='cdn.instruktur', string='Instruktur')
     no_hp = fields.Char(string='No. HP', related='instruktur_id.mobile')

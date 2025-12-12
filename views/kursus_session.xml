@@ -39,6 +39,7 @@
 
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
                     </header>
+
                     <sheet>
                         <widget name="web_ribbon" bg_color="bg-info" text="Selesai" invisible="state != 'done'" />
 
@@ -81,6 +82,8 @@
                             </page>
                         </notebook>
                     </sheet>
+
+                    <chatter />
                 </form>
             </field>
         </record>
