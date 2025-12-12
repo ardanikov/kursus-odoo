@@ -26,7 +26,7 @@ class KursusSession(models.Model):
     jenis_kelamin = fields.Selection(string='Jenis Kelamin', related='instruktur_id.jenis_kelamin')
     state = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('done', 'Done')], default='draft')
 
-    @api.depends('instruktur_id')
+    @api.depends('peserta_ids')
     def _compute_jml_peserta(self):
         for record in self:
             record.seats = len(record.peserta_ids)
