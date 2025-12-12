@@ -31,7 +31,7 @@
             <field name="arch" type="xml">
                 <form string="Kursus Session">
                     <sheet>
-                        <group>
+                        <group string="Informasi Sesi Kursus">
                             <group>
                                 <field name="start_date" />
 
@@ -41,12 +41,21 @@
                             </group>
                             <group>
                                 <field name="duration" string="Durasi (jam)" />
-
                                 <field name="seats" string="Jumlah Peserta" />
-
-                                <field name="instruktur_id" />
                             </group>
                         </group>
+
+                        <group string="Informasi Instruktur">
+                            <group>
+                                <field name="instruktur_id" />
+                                <field name="no_hp" />
+                            </group>
+                            <group>
+                                <field name="email" />
+                                <field name="jenis_kelamin" />
+                            </group>
+                        </group>
+
                         <notebook>
                             <page string="Peserta">
                                 <field name="peserta_ids">

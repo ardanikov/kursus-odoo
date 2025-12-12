@@ -14,3 +14,4 @@ class Peserta(models.Model):
     tmp_lahir = fields.Char(string='Tempat Lahir')
     tgl_lahir = fields.Date(string='Tanggal Lahir')
     profile_image = fields.Image(string='Foto Profil', max_width=256, max_height=256)
+    kursus_session_ids = fields.Many2many(comodel_name='cdn.kursus.session', string='Sesi Kursus')
