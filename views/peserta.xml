@@ -21,6 +21,22 @@
             </field>
         </record>
 
+        <record id="cdn_peserta_search" model="ir.ui.view">
+            <field name="name">cdn.peserta.search</field>
+
+            <field name="model">cdn.peserta</field>
+
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="jenis_kelamin_l" string="Laki-laki" domain="[('jenis_kelamin', '=', 'l')]" />
+
+                    <filter name="jenis_kelamin_p" string="Perempuan" domain="[('jenis_kelamin', '=', 'p')]" />
+
+                    <filter name="is_menikah" string="Status Pernikahan" context="{'group_by': 'is_menikah'}" />
+                </search>
+            </field>
+        </record>
+
         <record id="cdn_peserta_form" model="ir.ui.view">
             <field name="name">cdn.peserta.form</field>
 
@@ -88,12 +104,12 @@
                             <div class="row">
                                 <div class="col-5">
                                     <group>
-                                        <field name="nama_pasangan" />
+                                        <field name="nama_pasangan" required="is_menikah" />
                                     </group>
                                 </div>
                                 <div class="col-5">
                                     <group>
-                                        <field name="hp_pasangan" />
+                                        <field name="hp_pasangan" required="is_menikah" />
                                     </group>
                                 </div>
                             </div>
