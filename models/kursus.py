@@ -23,8 +23,24 @@ class KursusSession(models.Model):
     no_hp = fields.Char(string='No. HP', related='instruktur_id.mobile')
     email = fields.Char(string='Email', related='instruktur_id.email')
     jenis_kelamin = fields.Selection(string='Jenis Kelamin', related='instruktur_id.jenis_kelamin')
+    state = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('done', 'Done')], default='draft')
 
     @api.depends('instruktur_id')
     def _compute_jml_peserta(self):
         for record in self:
             record.seats = len(record.peserta_ids)
+
+    def action_reset(self):
+        for record in self:
+            record.state = 'draft'
+
+    def action_confirm(self):
+        for record in self:
+            record.state = 'confirm'
+
+    def action_done(self):
+        for record in self:
+            record.state = 'done'
+
+
+    
