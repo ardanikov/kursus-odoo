@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record id="view_kursus_session_tree" model="ir.ui.view">
+            <field name="name">cdn.kursus.session.list</field>
+
+            <field name="model">cdn.kursus.session</field>
+
+            <field name="arch" type="xml">
+                <list string="Kursus Session">
+                    <field name="name" />
+
+                    <field name="kursus_id" />
+
+                    <field name="start_date" />
+
+                    <field name="duration" string="Durasi (jam)" />
+
+                    <field name="seats" string="Peserta" />
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_kursus_session_form" model="ir.ui.view">
+            <field name="name">cdn.kursus.session.form</field>
+
+            <field name="model">cdn.kursus.session</field>
+
+            <field name="arch" type="xml">
+                <form string="Kursus Session">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="start_date" />
+
+                                <field name="name" string="Pokok Bahasan" />
+
+                                <field name="kursus_id" />
+                            </group>
+                            <group>
+                                <field name="duration" string="Durasi (jam)" />
+
+                                <field name="seats" string="Jumlah Peserta" />
+
+                                <field name="instruktur_id" />
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Peserta">
+                                <field name="peserta_ids">
+                                    <list>
+                                        <field name="name" />
+
+                                        <field name="jenis_kelamin" />
+
+                                        <field name="mobile" string="No. HP" />
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_kursus_session" model="ir.actions.act_window">
+            <field name="name">Sesi Kursus</field>
+
+            <field name="type">ir.actions.act_window</field>
+
+            <field name="res_model">cdn.kursus.session</field>
+
+            <field name="view_mode">list,form</field>
+
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">                    
+                    Buat Kursus Session Baru
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item -->
+        <menuitem id="menu_kursus_session" name="Sesi Kursus" parent="training_menu_categ" action="action_kursus_session" sequence="20" />
+    </data>
+</odoo>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="cdn_kecamatan_list" model="ir.ui.view">
+            <field name="name">cdn.kecamatan.form</field>
+
+            <field name="model">cdn.kecamatan</field>
+
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name" />
+
+                    <field name="kode" />
+
+                    <field name="singkatan" />
+
+                    <field name="description" />
+
+                    <field name="kota_id" />
+                </list>
+            </field>
+        </record>
+
+        <record id="cdn_kecamatan_form" model="ir.ui.view">
+            <field name="name">cdn.kecamatan.form</field>
+
+            <field name="model">cdn.kecamatan</field>
+
+            <field name="arch" type="xml">
+                <form string="Kecamatan">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+
+                            <field name="kode" />
+
+                            <field name="singkatan" />
+
+                            <field name="description" />
+
+                            <field name="kota_id" />
+                        </group>
+                        <notebook>
+                            <page name="desa" string="Desa">
+                                <field name="desa_ids" readonly="1">
+                                    <list>
+                                        <field name="kode" />
+                                        <field name="name" />
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="cdn_kecamatan_action" model="ir.actions.act_window">
+            <field name="name">Kecamatan</field>
+
+            <field name="type">ir.actions.act_window</field>
+
+            <field name="res_model">cdn.kecamatan</field>
+
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="kecamatan_menu_act" name="Kecamatan" parent="wilayah_menu_categ" action="cdn_kecamatan_action" sequence="30" />
+    </data>
+</odoo>
