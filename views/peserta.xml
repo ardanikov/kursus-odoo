@@ -171,7 +171,7 @@
 
             <field name="domain">[('jenis_kelamin','=','l')]</field>
 
-            <field name="context">{'default_jenis_kel':'l'}</field>
+            <field name="context">{'default_jenis_kelamin':'l'}</field>
 
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
@@ -194,7 +194,7 @@
 
             <field name="domain">[('jenis_kelamin','=','p')]</field>
 
-            <field name="context">{'default_jenis_kel':'p'}</field>
+            <field name="context">{'default_jenis_kelamin':'p'}</field>
 
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
