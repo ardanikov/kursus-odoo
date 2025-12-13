@@ -45,12 +45,19 @@
             <field name="arch" type="xml">
                 <form string="Peserta">
                     <sheet>
+                        <div class="oe_title">
+                            <h3>
+                                <label for="no_peserta" string="No Peserta" />
+                            </h3>
+                            <h1>
+                                <field name="no_peserta" class="mb-0 mt-1" />
+                            </h1>
+                        </div>
+
                         <div class="row">
                             <div class="col">
                                 <group string="Identitas Siswa">
                                     <group>
-                                        <field name="no_peserta" />
-
                                         <field name="name" required="1" />
 
                                         <field name="jenis_kelamin" required="1" />
@@ -102,18 +109,22 @@
                                 </group>
                             </div>
                         </div>
+
                         <group string="Pasangan" invisible="not is_menikah">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col">
                                     <group>
                                         <field name="nama_pasangan" required="is_menikah" />
                                     </group>
                                 </div>
-                                <div class="col-5">
+
+                                <div class="col">
                                     <group>
                                         <field name="hp_pasangan" required="is_menikah" />
                                     </group>
                                 </div>
+
+                                <div class="col-1" />
                             </div>
                         </group>
                     </sheet>
@@ -135,8 +146,22 @@
             <field name="implementation">standard</field>
         </record>
 
+        <record id="action_generate_no_peserta" model="ir.actions.server">
+            <field name="name">Generate No Peserta</field>
+
+            <field name="model_id" ref="model_cdn_peserta" />
+
+            <field name="binding_model_id" ref="model_cdn_peserta" />
+
+            <field name="state">code</field>
+
+            <field name="code">                
+                action = records.action_generate_no_peserta()
+            </field>
+        </record>
+
         <record id="cdn_peserta_action_laki" model="ir.actions.act_window">
-            <field name="name">Data peserta Laki-laki</field>
+            <field name="name">Data Peserta Laki-laki</field>
 
             <field name="type">ir.actions.act_window</field>
 
@@ -159,7 +184,7 @@
         </record>
 
         <record id="cdn_peserta_action_perempuan" model="ir.actions.act_window">
-            <field name="name">Data peserta Perempuan</field>
+            <field name="name">Data Peserta Perempuan</field>
 
             <field name="type">ir.actions.act_window</field>
 

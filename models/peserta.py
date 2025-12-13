@@ -20,4 +20,9 @@ class Peserta(models.Model):
     def create(self, vals):
         vals['no_peserta'] = self.env['ir.sequence'].next_by_code('sequence.peserta')
         return super(Peserta, self).create(vals)
+
+    def action_generate_no_peserta(self):
+        for record in self:
+            if not record.no_peserta:
+                record.no_peserta = self.env['ir.sequence'].next_by_code('sequence.peserta')
         
