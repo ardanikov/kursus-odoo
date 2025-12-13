@@ -15,3 +15,9 @@ class Peserta(models.Model):
     tgl_lahir = fields.Date(string='Tanggal Lahir')
     profile_image = fields.Image(string='Foto Profil', max_width=256, max_height=256)
     kursus_session_ids = fields.Many2many(comodel_name='cdn.kursus.session', string='Sesi Kursus')
+    no_peserta = fields.Char(string='No. Peserta', readonly=True)
+    @api.model
+    def create(self, vals):
+        vals['no_peserta'] = self.env['ir.sequence'].next_by_code('sequence.peserta')
+        return super(Peserta, self).create(vals)
+        
