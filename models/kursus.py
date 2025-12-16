@@ -22,8 +22,8 @@ class KursusSession(models.Model):
     peserta_ids = fields.Many2many(comodel_name='cdn.peserta', string='Peserta')
     instruktur_id = fields.Many2one(comodel_name='cdn.instruktur', string='Instruktur')
     no_hp = fields.Char(string='No. HP', related='instruktur_id.mobile')
-    email = fields.Char(string='Email', related='instruktur_id.email')
-    jenis_kelamin = fields.Selection(string='Jenis Kelamin', related='instruktur_id.jenis_kelamin')
+    email = fields.Char(string='Email', related="instruktur_id.email")
+    jenis_kelamin = fields.Selection(string='Jenis Kelamin', related="instruktur_id.jenis_kelamin")
     state = fields.Selection(string='Status', selection=[('draft', 'Draft'), ('confirm', 'Confirm'), ('done', 'Done')], default='draft')
 
     @api.depends('peserta_ids')
@@ -43,5 +43,5 @@ class KursusSession(models.Model):
         for record in self:
             record.state = 'done'
 
-
+    
     
