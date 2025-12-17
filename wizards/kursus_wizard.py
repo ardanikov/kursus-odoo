@@ -1,4 +1,6 @@
 from odoo import models, fields, api
+from odoo.exceptions import UserError
+
 
 class KursusWizard(models.TransientModel):
     _name = 'cdn.kursus.wizard'
@@ -12,8 +14,12 @@ class KursusWizard(models.TransientModel):
     peserta_ids = fields.Many2many('cdn.peserta', string='Peserta')
 
     def action_add_peserta(self):
+        if self.session_id.state == 'done':
+            raise UserError('Tidak bisa menambahkan peserta pada kursus yang sudah selesai')
         self.session_id.peserta_ids |= self.peserta_ids
 
     def action_add_many_peserta(self):
         for session in self.session_ids:
+            if session.state == 'done':
+                continue
             session.peserta_ids |= self.peserta_ids

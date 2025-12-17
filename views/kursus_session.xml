@@ -8,7 +8,7 @@
             <field name="model">cdn.kursus.session</field>
 
             <field name="arch" type="xml">
-                <list string="Kursus Session" decoration-danger="seats == 0">
+                <list string="Kursus Session" decoration-danger="seats == 0" decoration-info="state == 'done'">
                     <field name="name" />
 
                     <field name="kursus_id" />
