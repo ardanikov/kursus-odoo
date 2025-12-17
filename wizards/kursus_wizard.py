@@ -23,3 +23,4 @@ class KursusWizard(models.TransientModel):
             if session.state == 'done':
                 continue
             session.peserta_ids |= self.peserta_ids
+            

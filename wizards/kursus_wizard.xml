@@ -70,5 +70,37 @@
 
             <field name="binding_view_types">list</field>
         </record>
+
+        <record id="set_status_confirm" model="ir.actions.server">
+            <field name="name">Set Status Confirm</field>
+
+            <field name="model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">
+                records.write({'state': 'confirm'})
+            </field>
+        </record>
+
+        <record id="set_status_done" model="ir.actions.server">
+            <field name="name">Set Status Done</field>
+
+            <field name="model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">
+                records.write({'state': 'done'})
+            </field>
+        </record>
     </data>
 </odoo>
