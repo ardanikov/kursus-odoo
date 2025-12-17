@@ -82,19 +82,6 @@
                                     </list>
                                 </field>
                             </page>
-                            <page string="Peralatan / Konsumsi">
-                                <field name="produk_ids" readonly="state != 'draft'">
-                                    <list>
-                                        <field name="name" />
-
-                                        <field name="product_template_variant_value_ids" widget="many2many_tags" string="Opsi" />
-
-                                        <!-- <field name="standard_price" />
-
-                                        <field name="lst_price" /> -->
-                                    </list>
-                                </field>
-                            </page>
                         </notebook>
                     </sheet>
 
