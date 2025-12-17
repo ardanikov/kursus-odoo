@@ -80,6 +80,19 @@
                                     </list>
                                 </field>
                             </page>
+                            <page string="Peralatan / Konsumsi">
+                                <field name="produk_ids" readonly="state != 'draft'">
+                                    <list>
+                                        <field name="name" />
+
+                                        <field name="product_template_variant_value_ids" widget="many2many_tags" string="Opsi" />
+
+                                        <!-- <field name="standard_price" />
+
+                                        <field name="lst_price" /> -->
+                                    </list>
+                                </field>
+                            </page>
                         </notebook>
                     </sheet>
 
@@ -96,9 +109,9 @@
             <field name="arch" type="xml">
                 <calendar string="Calendar Description" date_start="start_date" mode="month">
                     <!-- Add your fields here -->
-                    <field name="name" filters="1" />
+                    <field name="name" />
 
-                    <field name="instruktur_id" />
+                    <field name="instruktur_id" filters="1" />
                 </calendar>
             </field>
         </record>
