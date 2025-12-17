@@ -32,7 +32,7 @@
                         <field name="peserta_ids" />
                     </group>
                     <footer>
-                        <button name="action_add_peserta" string="Tambah Banyak Peserta" type="object" class="btn-primary" confirm="Apakah Anda yakin akan menambah Peserta pada semua Sesi yang dipilih ini ?" />
+                        <button name="action_add_many_peserta" string="Tambah Banyak Peserta" type="object" class="btn-primary" confirm="Apakah Anda yakin akan menambah Peserta pada semua Sesi yang dipilih ini ?" />
                         <button string="Batal" class="btn-secondary" special="cancel" />
                     </footer>
                 </form>
