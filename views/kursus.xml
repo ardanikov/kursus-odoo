@@ -27,7 +27,10 @@
                     <sheet>
                         <group>
                             <field name="name"/>
+
                             <field name="user_id"/>
+
+                            <field name="harga_kursus"/>
                         </group>
                         <notebook>
                             <page name="sesi" string="Sesi Kursus">

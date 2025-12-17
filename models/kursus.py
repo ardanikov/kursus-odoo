@@ -10,6 +10,12 @@ class Kursus(models.Model):
     user_id = fields.Many2one('res.users', string='Penanggung jawab')
     session_line_ids = fields.One2many(comodel_name='cdn.kursus.session', string='Session', inverse_name='kursus_id')
     produk_ids = fields.Many2many(comodel_name='product.product', string='Peralatan / Konsumsi')
+    harga_kursus = fields.Float(string='Harga Kursus', compute='_compute_harga_kursus', store=True)
+
+    @api.depends('produk_ids')
+    def _compute_harga_kursus(self):
+        for record in self:
+            record.harga_kursus = sum(record.produk_ids.mapped('lst_price'))
     
 class KursusSession(models.Model):
     _name = 'cdn.kursus.session'
