@@ -18,6 +18,8 @@
                     <field name="duration" string="Durasi (jam)" />
 
                     <field name="seats" string="Peserta" />
+
+                    <field name="state" string="Status" />
                 </list>
             </field>
         </record>
@@ -35,13 +37,13 @@
 
                         <button name="action_done" string="Done" type="object" class="btn-primary" invisible="state != 'confirm'" />
 
-                        <button name="action_reset" string="Reset Status" type="object" class="btn-secondary" invisible="state == 'draft'" />
+                        <button name="action_reset" string="Reset Status" type="object" class="btn-secondary" invisible="state != 'confirm'" />
 
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
                     </header>
 
                     <sheet>
-                        <widget name="web_ribbon" bg_color="bg-info" text="Selesai" invisible="state != 'done'" />
+                        <widget name="web_ribbon" bg_color="bg-info" text="Selesai" invisible="state != 'done'"/>
 
                         <group string="Informasi Sesi Kursus">
                             <group>
@@ -59,7 +61,7 @@
 
                         <group string="Informasi Instruktur">
                             <group>
-                                <field name="instruktur_id" readonly="state != 'draft'" />
+                                <field name="instruktur_id" readonly="state == 'done'" required="state == 'confirm'"/>
                                 <field name="no_hp" />
                             </group>
                             <group>
@@ -130,6 +132,69 @@
                 <p class="o_view_nocontent_smiling_face">                    
                     Buat Kursus Session Baru
                 </p>
+            </field>
+        </record>
+
+         <record id="set_status_draft" model="ir.actions.server">
+            <field name="name">Set Status Draft</field>
+
+            <field name="model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">
+                records.action_reset()
+            </field>
+        </record>
+        <record id="set_status_confirm" model="ir.actions.server">
+            <field name="name">Set Status Confirm</field>
+
+            <field name="model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">
+                records.action_confirm()
+            </field>
+        </record>
+
+        <record id="set_status_done" model="ir.actions.server">
+            <field name="name">Set Status Done</field>
+
+            <field name="model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">
+                records.action_done()
+            </field>
+        </record>
+
+        <record id="set_status_reset_override" model="ir.actions.server">
+            <field name="name">Testing</field>
+
+            <field name="model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">
+                records.action_reset_override()
             </field>
         </record>
 

@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 class Kursus(models.Model):
     _name = 'cdn.kursus'
@@ -34,15 +35,24 @@ class KursusSession(models.Model):
 
     def action_reset(self):
         for record in self:
+            if record.state != 'done':
+                record.state = 'draft'
+
+    def action_reset_override(self):
+        for record in self:
             record.state = 'draft'
 
     def action_confirm(self):
         for record in self:
-            record.state = 'confirm'
+            if not record.instruktur_id:
+                raise ValidationError("Instruktur harus diisi sebelum konfirmasi!")
+            if record.state != 'done':
+                record.state = 'confirm'
 
     def action_done(self):
         for record in self:
-            record.state = 'done'
+            if record.state != 'draft':
+                record.state = 'done'
 
     
     
