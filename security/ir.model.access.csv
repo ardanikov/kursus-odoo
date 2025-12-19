@@ -8,6 +8,7 @@ access_user_cdn_kota,access_user_cdn_kota,model_cdn_kota,kursus.group_training_u
 access_user_cdn_kecamatan,access_user_cdn_kecamatan,model_cdn_kecamatan,kursus.group_training_user,1,0,0,0
 access_user_cdn_desa,access_user_cdn_desa,model_cdn_desa,kursus.group_training_user,1,0,0,0
 access_user_cdn_peserta,access_user_cdn_peserta,model_cdn_peserta,kursus.group_training_user,1,0,0,0
+access_user_cdn_pendaftaran,access_user_cdn_pendaftaran,model_cdn_pendaftaran,kursus.group_training_user,1,0,0,0
 
 access_manager_cdn_instruktur,access_manager_cdn_instruktur,model_cdn_instruktur,kursus.group_training_manager,1,1,1,1
 access_manager_dn_keahlian,access_manager_cdn_keahlian,model_cdn_keahlian,kursus.group_training_manager,1,1,1,1
