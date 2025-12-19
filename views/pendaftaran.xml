@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="cdn_pendaftaran_list" model="ir.ui.view">
+            <field name="name">cdn.pendaftaran.form</field>
+
+            <field name="model">cdn.pendaftaran</field>
+
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+
+                    <field name="tanggal"/>
+
+                    <field name="pendaftar_id"/>
+
+                    <field name="jenis_kelamin"/>
+
+                    <field name="no_hp"/>
+
+                    <field name="kursus_id"/>
+
+                    <field name="state" decoration-info="state == 'draft'" decoration-success="state == 'confirm'"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="cdn_pendaftaran_form" model="ir.ui.view">
+            <field name="name">cdn.pendaftaran.form</field>
+
+            <field name="model">cdn.pendaftaran</field>
+
+            <field name="arch" type="xml">
+                <form string="Pendaftaran">
+                    <header>
+                        <button name="action_confirm" string="Confirm" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h3>
+                                <label for="name" string="No Pendaftaran"/>
+                            </h3>
+                            <h1>
+                                <field name="name" class="mb-0 mt-1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="tanggal"/>
+
+                                <field name="pendaftar_id" readonly="state == 'confirm'"/>
+
+                                <field name="jenis_kelamin"/>
+
+                                <field name="no_hp"/>
+                            </group>
+                            <group>
+                                <field name="kursus_id" readonly="state == 'confirm'"/>
+
+                                <field name="currency_id" invisible="1"/>
+
+                                <field name="harga_kursus_total" string="Harga Kursus" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="set_status_confirm" model="ir.actions.server">
+            <field name="name">Set Status Confirm</field>
+
+            <field name="model_id" ref="model_cdn_pendaftaran"/>
+
+            <field name="binding_model_id" ref="model_cdn_pendaftaran"/>
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">                
+                records.action_confirm()
+            </field>
+        </record>
+
+        <record id="set_status_reset_override" model="ir.actions.server">
+            <field name="name">Set Status Reset Override</field>
+
+            <field name="model_id" ref="model_cdn_pendaftaran"/>
+
+            <field name="binding_model_id" ref="model_cdn_pendaftaran"/>
+
+            <field name="binding_view_types">list</field>
+
+            <field name="state">code</field>
+
+            <field name="code">                
+                records.action_reset()
+            </field>
+        </record>
+
+        <record id="seq_pendaftaran" model="ir.sequence">
+            <field name="name">Urutan Pendaftaran</field>
+
+            <field name="code">sequence.pendaftaran</field>
+
+            <field name="prefix">DFTR/%(y)s/%(month)s/</field>
+
+            <field name="padding">4</field>
+
+            <field name="number_increment">1</field>
+
+            <field name="implementation">standard</field>
+        </record>
+
+        <record id="cdn_pendaftaran_action" model="ir.actions.act_window">
+            <field name="name">Pendaftaran</field>
+
+            <field name="type">ir.actions.act_window</field>
+
+            <field name="res_model">cdn.pendaftaran</field>
+
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem id="pendaftaran_menu_act" name="Pendaftaran" parent="kursus_menu_root" action="cdn_pendaftaran_action" sequence="10"/>
+    </data>
+</odoo>

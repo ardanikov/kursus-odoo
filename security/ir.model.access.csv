@@ -19,4 +19,5 @@ access_manager_cdn_kecamatan,access_manager_cdn_kecamatan,model_cdn_kecamatan,ku
 access_manager_cdn_desa,access_manager_cdn_desa,model_cdn_desa,kursus.group_training_manager,1,1,1,1
 access_manager_cdn_peserta,access_manager_cdn_peserta,model_cdn_peserta,kursus.group_training_manager,1,1,1,1
 access_manager_cdn_kursus_wizard,access_manager_cdn_kursus_wizard,model_cdn_kursus_wizard,kursus.group_training_manager,1,1,1,1
+access_manager_cdn_pendaftaran,access_manager_cdn_pendaftaran,model_cdn_pendaftaran,kursus.group_training_manager,1,1,1,1
 

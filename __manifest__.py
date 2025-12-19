@@ -35,6 +35,8 @@ Aplikasi untuk mengelola kursus
         'views/kecamatan.xml',
         'views/desa.xml',
         'views/peserta.xml',
+        'views/product_inherit.xml',
+        'views/pendaftaran.xml',
         'wizards/kursus_wizard.xml',
     ],
     # only loaded in demonstration mode

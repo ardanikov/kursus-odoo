@@ -13,6 +13,8 @@
                     <field name="description"/>
 
                     <field name="user_id"/>
+
+                    <field name="harga_kursus_total" string="Harga Kursus" widget="monetary" options="{'currency_field': 'currency_id'}"/>
                 </list>
             </field>
         </record>
@@ -30,7 +32,13 @@
 
                             <field name="user_id"/>
 
-                            <field name="harga_kursus"/>
+                            <field name="currency_id" invisible="1"/>
+
+                            <field name="harga_kursus_total" string="Harga Kursus" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+                            <field name="harga_konsumsi" string="Harga Konsumsi" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+
+                            <field name="produk_kursus" string="Produk Kursus"/>
                         </group>
                         <notebook>
                             <page name="sesi" string="Sesi Kursus">
@@ -73,7 +81,8 @@
 
                                         <field name="product_template_variant_value_ids" widget="many2many_tags" string="Opsi"/>
 
-                                        <!-- <field name="standard_price" /> -->
+                                        <field name="standard_price"/>
+
                                         <field name="lst_price"/>
                                     </list>
                                 </field>
