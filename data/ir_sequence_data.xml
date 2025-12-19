@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequence for Peserta -->
+        <record id="seq_peserta" model="ir.sequence">
+            <field name="name">Urutan Peserta</field>
+
+            <field name="code">sequence.peserta</field>
+
+            <field name="prefix">A/%(y)s/%(month)s/</field>
+
+            <field name="padding">4</field>
+
+            <field name="number_increment">1</field>
+
+            <field name="implementation">standard</field>
+        </record>
+
+        <!-- Sequence for Pendaftaran -->
+        <record id="seq_pendaftaran" model="ir.sequence">
+            <field name="name">Urutan Pendaftaran</field>
+
+            <field name="code">sequence.pendaftaran</field>
+
+            <field name="prefix">DFTR/%(y)s/%(month)s/</field>
+
+            <field name="padding">4</field>
+
+            <field name="number_increment">1</field>
+
+            <field name="implementation">standard</field>
+        </record>
+    </data>
+</odoo>

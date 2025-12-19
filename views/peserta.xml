@@ -8,15 +8,15 @@
 
             <field name="arch" type="xml">
                 <list>
-                    <field name="name" />
+                    <field name="name"/>
 
-                    <field name="jenis_kelamin" />
+                    <field name="jenis_kelamin"/>
 
-                    <field name="street" string="Alamat" />
+                    <field name="street" string="Alamat"/>
 
-                    <field name="mobile" string="No. HP" />
+                    <field name="mobile" string="No. HP"/>
 
-                    <field name="email" />
+                    <field name="email"/>
                 </list>
             </field>
         </record>
@@ -28,11 +28,11 @@
 
             <field name="arch" type="xml">
                 <search>
-                    <filter name="jenis_kelamin_l" string="Laki-laki" domain="[('jenis_kelamin', '=', 'l')]" />
+                    <filter name="jenis_kelamin_l" string="Laki-laki" domain="[('jenis_kelamin', '=', 'l')]"/>
 
-                    <filter name="jenis_kelamin_p" string="Perempuan" domain="[('jenis_kelamin', '=', 'p')]" />
+                    <filter name="jenis_kelamin_p" string="Perempuan" domain="[('jenis_kelamin', '=', 'p')]"/>
 
-                    <filter name="is_menikah" string="Status Pernikahan" context="{'group_by': 'is_menikah'}" />
+                    <filter name="is_menikah" string="Status Pernikahan" context="{'group_by': 'is_menikah'}"/>
                 </search>
             </field>
         </record>
@@ -47,10 +47,10 @@
                     <sheet>
                         <div class="oe_title">
                             <h3>
-                                <label for="no_peserta" string="No Peserta" />
+                                <label for="no_peserta" string="No Peserta"/>
                             </h3>
                             <h1>
-                                <field name="no_peserta" class="mb-0 mt-1" />
+                                <field name="no_peserta" class="mb-0 mt-1"/>
                             </h1>
                         </div>
 
@@ -58,18 +58,18 @@
                             <div class="col">
                                 <group string="Identitas Siswa">
                                     <group>
-                                        <field name="name" required="1" />
+                                        <field name="name" required="1"/>
 
-                                        <field name="jenis_kelamin" required="1" />
+                                        <field name="jenis_kelamin" required="1"/>
 
-                                        <field name="email" />
+                                        <field name="email"/>
                                     </group>
                                     <group>
-                                        <field name="mobile" string="No. HP" required="1" />
+                                        <field name="mobile" string="No. HP" required="1"/>
 
-                                        <field name="tmp_lahir" />
+                                        <field name="tmp_lahir"/>
 
-                                        <field name="tgl_lahir" />
+                                        <field name="tgl_lahir"/>
                                     </group>
                                 </group>
                             </div>
@@ -77,26 +77,26 @@
                             <div class="col ms-2">
                                 <group string="Alamat">
                                     <group colspan="4">
-                                        <field name="street" string="Alamat" />
+                                        <field name="street" string="Alamat"/>
                                     </group>
 
                                     <group>
-                                        <field name="provinsi_id" />
-                                        <field name="kota_id" domain="[('provinsi_id', '=', provinsi_id)]" />
+                                        <field name="provinsi_id"/>
+                                        <field name="kota_id" domain="[('provinsi_id', '=', provinsi_id)]"/>
                                     </group>
 
                                     <group>
-                                        <field name="kecamatan_id" domain="[('kota_id', '=', kota_id)]" />
-                                        <field name="desa_id" domain="[('kecamatan_id', '=', kecamatan_id)]" />
+                                        <field name="kecamatan_id" domain="[('kota_id', '=', kota_id)]"/>
+                                        <field name="desa_id" domain="[('kecamatan_id', '=', kecamatan_id)]"/>
                                     </group>
 
                                     <group>
-                                        <field name="pendidikan" />
-                                        <field name="is_menikah" />
+                                        <field name="pendidikan"/>
+                                        <field name="is_menikah"/>
                                     </group>
 
                                     <group>
-                                        <field name="pekerjaan" />
+                                        <field name="pekerjaan"/>
                                     </group>
                                 </group>
                             </div>
@@ -104,7 +104,7 @@
                             <div class="col-1">
                                 <group string="Foto">
                                     <div class="float-end" style="width: 100%; height: 100%;">
-                                        <field name="profile_image" widget="image" class="rounded" />
+                                        <field name="profile_image" widget="image" class="rounded"/>
                                     </div>
                                 </group>
                             </div>
@@ -114,17 +114,17 @@
                             <div class="row">
                                 <div class="col">
                                     <group>
-                                        <field name="nama_pasangan" required="is_menikah" />
+                                        <field name="nama_pasangan" required="is_menikah"/>
                                     </group>
                                 </div>
 
                                 <div class="col">
                                     <group>
-                                        <field name="hp_pasangan" required="is_menikah" />
+                                        <field name="hp_pasangan" required="is_menikah"/>
                                     </group>
                                 </div>
 
-                                <div class="col-1" />
+                                <div class="col-1"/>
                             </div>
                         </group>
                     </sheet>
@@ -132,26 +132,12 @@
             </field>
         </record>
 
-        <record id="seq_peserta" model="ir.sequence">
-            <field name="name">Urutan Peserta</field>
-
-            <field name="code">sequence.peserta</field>
-
-            <field name="prefix">A/%(y)s/%(month)s/</field>
-
-            <field name="padding">4</field>
-
-            <field name="number_increment">1</field>
-
-            <field name="implementation">standard</field>
-        </record>
-
         <record id="action_generate_no_peserta" model="ir.actions.server">
             <field name="name">Generate No Peserta</field>
 
-            <field name="model_id" ref="model_cdn_peserta" />
+            <field name="model_id" ref="model_cdn_peserta"/>
 
-            <field name="binding_model_id" ref="model_cdn_peserta" />
+            <field name="binding_model_id" ref="model_cdn_peserta"/>
 
             <field name="state">code</field>
 
@@ -225,10 +211,10 @@
             </field>
         </record>
 
-        <menuitem id="peserta_menu_act_all" name="Semua Peserta" parent="pengaturan_menu_categ" action="cdn_peserta_action_all" sequence="10" />
+        <menuitem id="peserta_menu_act_all" name="Semua Peserta" parent="pengaturan_menu_categ" action="cdn_peserta_action_all" sequence="10"/>
 
-        <menuitem id="peserta_menu_act_laki" name="Peserta Laki-laki" parent="pengaturan_menu_categ" action="cdn_peserta_action_laki" sequence="10" />
+        <menuitem id="peserta_menu_act_laki" name="Peserta Laki-laki" parent="pengaturan_menu_categ" action="cdn_peserta_action_laki" sequence="10"/>
 
-        <menuitem id="peserta_menu_act_perempuan" name="Peserta Perempuan" parent="pengaturan_menu_categ" action="cdn_peserta_action_perempuan" sequence="10" />
+        <menuitem id="peserta_menu_act_perempuan" name="Peserta Perempuan" parent="pengaturan_menu_categ" action="cdn_peserta_action_perempuan" sequence="10"/>
     </data>
 </odoo>

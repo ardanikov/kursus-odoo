@@ -100,20 +100,6 @@
             </field>
         </record>
 
-        <record id="seq_pendaftaran" model="ir.sequence">
-            <field name="name">Urutan Pendaftaran</field>
-
-            <field name="code">sequence.pendaftaran</field>
-
-            <field name="prefix">DFTR/%(y)s/%(month)s/</field>
-
-            <field name="padding">4</field>
-
-            <field name="number_increment">1</field>
-
-            <field name="implementation">standard</field>
-        </record>
-
         <record id="cdn_pendaftaran_action" model="ir.actions.act_window">
             <field name="name">Pendaftaran</field>
 
