@@ -12,7 +12,7 @@ class Kursus(models.Model):
     produk_ids = fields.Many2many(comodel_name='product.product', string='Peralatan / Konsumsi')
     harga_konsumsi = fields.Float(string='Harga Konsumsi', compute='_compute_harga_konsumsi')
     produk_kursus = fields.Many2one(comodel_name='product.product', string='Produk Kursus', domain=[('is_kursus_product', '=', True)])
-    harga_kursus_total = fields.Float(related='produk_kursus.lst_price', string='Harga Kursus')
+    harga_kursus_total = fields.Float(related='produk_kursus.lst_price', string='Harga Kursus', store=True)
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
 
     @api.depends('produk_ids')
