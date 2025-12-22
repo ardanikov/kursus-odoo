@@ -36,6 +36,8 @@
 
                             <field name="session_id"/>
 
+                            <field name="jml_peserta_hadir"/>
+
                             <field name="harga_kursus_total"/>
                         </group>
                         <notebook>

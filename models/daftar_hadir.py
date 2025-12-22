@@ -10,6 +10,7 @@ class DaftarHadir(models.Model):
     session_id = fields.Many2one("cdn.kursus.session", string="Sesi", domain="[('kursus_id', '=', kursus_id)]", required=True)
     harga_kursus_total = fields.Float(string="Harga Kursus", related="session_id.kursus_id.harga_kursus_total")
     daftar_hadir_ids = fields.One2many(comodel_name="cdn.daftar_hadir_line", inverse_name="daftar_hadir_id", string="Detail Kehadiran")
+    jml_peserta_hadir = fields.Integer(string="Peserta Hadir", compute="_compute_peserta_hadir")
 
     @api.onchange('kursus_id')
     def _onchange_kursus_id(self):
@@ -29,6 +30,11 @@ class DaftarHadir(models.Model):
     def action_reset(self):
         for record in self:
             record.state = 'draft'
+
+    @api.depends('daftar_hadir_ids')
+    def _compute_peserta_hadir(self):
+        for record in self:
+            record.jml_peserta_hadir = len(record.daftar_hadir_ids.filtered(lambda x: x.is_hadir == 'hadir'))
 
 class DaftarHadirLine(models.Model):
     _name = "cdn.daftar_hadir_line"
