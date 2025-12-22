@@ -61,6 +61,6 @@
             <field name="view_mode">list,form</field>
         </record>
 
-        <menuitem id="daftar_hadir_menu_act" name="Daftar Hadir" parent="kursus_menu_root" action="cdn_daftar_hadir_action" sequence="20"/>
+        <menuitem id="daftar_hadir_menu_act" name="Daftar Hadir" parent="pendaftaran_menu_categ" action="cdn_daftar_hadir_action" sequence="20"/>
     </data>
 </odoo>

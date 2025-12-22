@@ -17,7 +17,7 @@ class DaftarHadir(models.Model):
             pendaftaran_records = self.env['cdn.pendaftaran'].search([('kursus_id', '=', self.kursus_id.id), ('state', '=', 'confirm')])
             line = []
             for reg in pendaftaran_records:
-                line.append((0, 0, {'pendaftaran_id': reg.id, 'peserta_id': reg.pendaftar_id.id, 'is_hadir': True,}))
+                line.append((0, 0, {'pendaftaran_id': reg.id, 'peserta_id': reg.pendaftar_id.id, 'is_hadir': 'hadir',}))
             
             self.daftar_hadir_ids = [(5, 0, 0)] + line
 
@@ -37,7 +37,7 @@ class DaftarHadirLine(models.Model):
     daftar_hadir_id = fields.Many2one("cdn.daftar_hadir")
     pendaftaran_id = fields.Many2one("cdn.pendaftaran", string="Pendaftaran")
     peserta_id = fields.Many2one("cdn.peserta", string="Peserta")
-    is_hadir = fields.Boolean(string="Hadir", default=True)
+    is_hadir = fields.Selection(string="Hadir", selection=[('hadir', 'Hadir'), ('tidak_hadir', 'Tidak Hadir'), ('izin', 'Izin')], default='hadir', required=True)
 
 
     
