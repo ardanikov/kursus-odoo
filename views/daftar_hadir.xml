@@ -22,7 +22,7 @@
             <field name="arch" type="xml">
                 <form string="Daftar Hadir">
                     <header>
-                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight" invisible="not id or state == 'confirm'"/>
+                        <button name="action_confirm" string="Confirm" type="object" class="oe_highlight" invisible="state == 'confirm'"/>
 
                         <button name="action_reset" string="Reset" type="object" invisible="not id or state != 'confirm'"/>
 
@@ -42,7 +42,7 @@
                         </group>
                         <notebook>
                             <page string="Detail Kehadiran" name="detail_kehadiran">
-                                <field name="daftar_hadir_ids">
+                                <field name="daftar_hadir_ids" readonly="state == 'confirm'">
                                     <list editable="bottom" create="0">
                                         <field name="peserta_id" readonly="1" force_save="1"/>
                                         <field name="is_hadir"/>

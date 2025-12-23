@@ -3,6 +3,7 @@ from odoo import models, fields, api
 class DaftarHadir(models.Model):
     _name = "cdn.daftar_hadir"
     _description = "Daftar Hadir"
+    _rec_name = "tanggal"
 
     tanggal = fields.Date(string="Tanggal", default=fields.Date.today, required=True)
     kursus_id = fields.Many2one("cdn.kursus", string="Kursus", required=True)
