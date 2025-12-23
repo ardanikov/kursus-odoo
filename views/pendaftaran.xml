@@ -22,6 +22,8 @@
 
                     <field name="kursus_id"/>
 
+                    <field name="status_pembayaran"/>
+
                     <field name="state" decoration-info="state == 'draft'" decoration-success="state == 'confirm'"/>
                 </list>
             </field>

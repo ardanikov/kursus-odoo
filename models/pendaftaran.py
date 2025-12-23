@@ -14,6 +14,7 @@ class Pendaftaran(models.Model):
     harga_kursus_total = fields.Float(string='Harga Kursus Total', related="kursus_id.harga_kursus_total", readonly=True)
     currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
     invoice_id = fields.Many2one('account.move', string='Invoice')
+    status_pembayaran = fields.Selection(string='Status Pembayaran', related="invoice_id.payment_state", readonly=True)
     
     @api.model
     def create(self, vals):
