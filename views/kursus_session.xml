@@ -9,17 +9,17 @@
 
             <field name="arch" type="xml">
                 <list string="Kursus Session" decoration-danger="seats == 0" decoration-info="state == 'done'">
-                    <field name="name" />
+                    <field name="name"/>
 
-                    <field name="kursus_id" />
+                    <field name="kursus_id"/>
 
-                    <field name="start_date" />
+                    <field name="start_date"/>
 
-                    <field name="duration" string="Durasi (jam)" />
+                    <field name="duration" string="Durasi (jam)"/>
 
-                    <field name="seats" string="Peserta" />
+                    <field name="seats" string="Peserta"/>
 
-                    <field name="state" string="Status" />
+                    <field name="state" string="Status"/>
                 </list>
             </field>
         </record>
@@ -33,13 +33,13 @@
             <field name="arch" type="xml">
                 <form string="Kursus Session">
                     <header>
-                        <button name="action_confirm" string="Confirm" type="object" class="btn-primary" invisible="state != 'draft'" />
+                        <button name="action_confirm" string="Confirm" type="object" class="btn-primary" invisible="state != 'draft'"/>
 
-                        <button name="action_done" string="Done" type="object" class="btn-primary" invisible="state != 'confirm'" />
+                        <button name="action_done" string="Done" type="object" class="btn-primary" invisible="state != 'confirm'"/>
 
-                        <button name="action_reset" string="Reset Status" type="object" class="btn-secondary" invisible="state != 'confirm'" />
+                        <button name="action_reset" string="Reset Status" type="object" class="btn-secondary" invisible="state != 'confirm'"/>
 
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done" />
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>
                     </header>
 
                     <sheet>
@@ -47,26 +47,26 @@
 
                         <group string="Informasi Sesi Kursus">
                             <group>
-                                <field name="start_date" readonly="state != 'draft'" />
+                                <field name="start_date" readonly="state != 'draft'"/>
 
-                                <field name="name" string="Pokok Bahasan" readonly="state != 'draft'" />
+                                <field name="name" string="Pokok Bahasan" readonly="state != 'draft'"/>
 
-                                <field name="kursus_id" readonly="state != 'draft'" />
+                                <field name="kursus_id" readonly="state != 'draft'"/>
                             </group>
                             <group>
-                                <field name="duration" string="Durasi (jam)" readonly="state != 'draft'" />
-                                <field name="seats" string="Jumlah Peserta" readonly="state != 'draft'" />
+                                <field name="duration" string="Durasi (jam)" readonly="state != 'draft'"/>
+                                <field name="seats" string="Jumlah Peserta" readonly="state != 'draft'"/>
                             </group>
                         </group>
 
                         <group string="Informasi Instruktur">
                             <group>
                                 <field name="instruktur_id" readonly="state == 'done'" required="state == 'confirm'"/>
-                                <field name="no_hp" />
+                                <field name="no_hp"/>
                             </group>
                             <group>
-                                <field name="email" />
-                                <field name="jenis_kelamin" />
+                                <field name="email"/>
+                                <field name="jenis_kelamin"/>
                             </group>
                         </group>
 
@@ -74,18 +74,18 @@
                             <page string="Peserta">
                                 <field name="peserta_ids" readonly="state != 'draft'">
                                     <list>
-                                        <field name="name" />
+                                        <field name="name"/>
 
-                                        <field name="jenis_kelamin" />
+                                        <field name="jenis_kelamin"/>
 
-                                        <field name="mobile" string="No. HP" />
+                                        <field name="mobile" string="No. HP"/>
                                     </list>
                                 </field>
                             </page>
                         </notebook>
                     </sheet>
 
-                    <chatter />
+                    <chatter/>
                 </form>
             </field>
         </record>
@@ -98,9 +98,9 @@
             <field name="arch" type="xml">
                 <calendar string="Calendar Description" date_start="start_date" mode="month">
                     <!-- Add your fields here -->
-                    <field name="name" />
+                    <field name="name"/>
 
-                    <field name="instruktur_id" filters="1" />
+                    <field name="instruktur_id" filters="1"/>
                 </calendar>
             </field>
         </record>
@@ -122,33 +122,34 @@
             </field>
         </record>
 
-         <record id="set_status_draft" model="ir.actions.server">
+        <record id="set_status_draft" model="ir.actions.server">
             <field name="name">Set Status Draft</field>
 
-            <field name="model_id" ref="model_cdn_kursus_session" />
+            <field name="model_id" ref="model_cdn_kursus_session"/>
 
-            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+            <field name="binding_model_id" ref="model_cdn_kursus_session"/>
 
             <field name="binding_view_types">list</field>
 
             <field name="state">code</field>
 
-            <field name="code">
+            <field name="code">                
                 records.action_reset()
             </field>
         </record>
+
         <record id="set_status_confirm" model="ir.actions.server">
             <field name="name">Set Status Confirm</field>
 
-            <field name="model_id" ref="model_cdn_kursus_session" />
+            <field name="model_id" ref="model_cdn_kursus_session"/>
 
-            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+            <field name="binding_model_id" ref="model_cdn_kursus_session"/>
 
             <field name="binding_view_types">list</field>
 
             <field name="state">code</field>
 
-            <field name="code">
+            <field name="code">                
                 records.action_confirm()
             </field>
         </record>
@@ -156,15 +157,15 @@
         <record id="set_status_done" model="ir.actions.server">
             <field name="name">Set Status Done</field>
 
-            <field name="model_id" ref="model_cdn_kursus_session" />
+            <field name="model_id" ref="model_cdn_kursus_session"/>
 
-            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+            <field name="binding_model_id" ref="model_cdn_kursus_session"/>
 
             <field name="binding_view_types">list</field>
 
             <field name="state">code</field>
 
-            <field name="code">
+            <field name="code">                
                 records.action_done()
             </field>
         </record>
@@ -172,20 +173,20 @@
         <record id="set_status_reset_override" model="ir.actions.server">
             <field name="name">Testing</field>
 
-            <field name="model_id" ref="model_cdn_kursus_session" />
+            <field name="model_id" ref="model_cdn_kursus_session"/>
 
-            <field name="binding_model_id" ref="model_cdn_kursus_session" />
+            <field name="binding_model_id" ref="model_cdn_kursus_session"/>
 
             <field name="binding_view_types">list</field>
 
             <field name="state">code</field>
 
-            <field name="code">
+            <field name="code">                
                 records.action_reset_override()
             </field>
         </record>
 
         <!-- Menu Item -->
-        <menuitem id="menu_kursus_session" name="Sesi Kursus" parent="training_menu_categ" action="action_kursus_session" sequence="20" />
+        <menuitem id="menu_kursus_session" name="Sesi Kursus" parent="training_menu_categ" action="action_kursus_session" sequence="20"/>
     </data>
 </odoo>

@@ -18,7 +18,7 @@ Aplikasi untuk mengelola kursus
     'version': '18.0.0.0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'product'],
+    'depends': ['base', 'mail', 'product', 'account'],
 
     # always loaded
     'data': [

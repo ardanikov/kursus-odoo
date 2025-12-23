@@ -8,6 +8,8 @@
 
             <field name="arch" type="xml">
                 <list>
+                    <field name="invoice_id"/>
+
                     <field name="name"/>
 
                     <field name="tanggal"/>
@@ -33,7 +35,12 @@
             <field name="arch" type="xml">
                 <form string="Pendaftaran">
                     <header>
-                        <button name="action_confirm" string="Confirm" type="object" class="btn-primary" invisible="state != 'draft' or not id"/>
+                        <button name="action_confirm" string="Confirm" type="object" class="btn-primary" invisible="state != 'draft'"/>
+
+                        <button name="action_reset" string="Reset" type="object" invisible="state != 'confirm'"/>
+
+                        <button name="action_create_invoice" string="Buat Tagihan" type="object" class="btn-secondary" invisible="state != 'confirm' or invoice_id"/>
+
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
                     </header>
                     <sheet>
@@ -47,6 +54,8 @@
                         </div>
                         <group>
                             <group>
+                                <field name="invoice_id" invisible="not invoice_id" readonly="1"/>
+
                                 <field name="tanggal"/>
 
                                 <field name="pendaftar_id" readonly="state == 'confirm'"/>
