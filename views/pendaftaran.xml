@@ -8,8 +8,6 @@
 
             <field name="arch" type="xml">
                 <list>
-                    <field name="invoice_id"/>
-
                     <field name="name"/>
 
                     <field name="tanggal"/>
@@ -22,9 +20,11 @@
 
                     <field name="kursus_id"/>
 
-                    <field name="status_pembayaran"/>
+                    <field name="invoice_id"/>
 
-                    <field name="state" decoration-info="state == 'draft'" decoration-success="state == 'confirm'"/>
+                    <field name="state" string="Status Pendaftaran" decoration-info="state == 'draft'" decoration-success="state == 'confirm'"/>
+
+                    <field name="status_pembayaran" decoration-info="status_pembayaran == 'partial'" decoration-success="status_pembayaran == 'paid'" decoration-danger="status_pembayaran == 'not_paid'"/>
                 </list>
             </field>
         </record>

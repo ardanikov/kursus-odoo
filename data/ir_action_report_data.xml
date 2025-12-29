@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_report_pendaftaran" model="ir.actions.report">
+            <field name="name">Bukti Pendaftaran</field>
+
+            <field name="model">cdn.pendaftaran</field>
+
+            <field name="report_type">qweb-pdf</field>
+
+            <field name="report_name">kursus.report_pendaftaran_document</field>
+
+            <field name="report_file">kursus.report_pendaftaran_document</field>
+
+            <field name="print_report_name">'Bukti Pendaftaran - %s' % (object.name)</field>
+
+            <field name="binding_model_id" ref="model_cdn_pendaftaran"/>
+
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_peserta_card" model="ir.actions.report">
+            <field name="name">Cetak Kartu Peserta</field>
+
+            <field name="model">cdn.peserta</field>
+
+            <field name="report_type">qweb-pdf</field>
+
+            <field name="report_name">kursus.report_peserta_card</field>
+
+            <field name="report_file">kursus.report_peserta_card</field>
+
+            <field name="print_report_name">'Kartu - %s' % (object.name)</field>
+
+            <field name="binding_model_id" ref="model_cdn_peserta"/>
+
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_daftar_hadir" model="ir.actions.report">
+            <field name="name">Laporan Daftar Hadir</field>
+
+            <field name="model">cdn.daftar_hadir</field>
+
+            <field name="report_type">qweb-html</field>
+
+            <field name="report_name">kursus.report_daftar_hadir</field>
+
+            <field name="report_file">kursus.report_daftar_hadir</field>
+
+            <field name="print_report_name">'Daftar Hadir - %s' % (object.tanggal)</field>
+
+            <field name="binding_model_id" ref="model_cdn_daftar_hadir"/>
+
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>

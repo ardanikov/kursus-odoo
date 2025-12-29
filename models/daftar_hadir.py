@@ -11,6 +11,7 @@ class DaftarHadir(models.Model):
     session_id = fields.Many2one("cdn.kursus.session", string="Sesi", domain="[('kursus_id', '=', kursus_id)]", required=True)
     harga_kursus_total = fields.Float(string="Harga Kursus", related="session_id.kursus_id.harga_kursus_total")
     daftar_hadir_ids = fields.One2many(comodel_name="cdn.daftar_hadir_line", inverse_name="daftar_hadir_id", string="Detail Kehadiran")
+    instruktur_id = fields.Many2one("cdn.instruktur", string="Instruktur", related="session_id.instruktur_id")
     jml_peserta_hadir = fields.Integer(string="Peserta Hadir", compute="_compute_peserta_hadir")
 
     @api.onchange('kursus_id')

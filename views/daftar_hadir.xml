@@ -9,7 +9,16 @@
             <field name="arch" type="xml">
                 <list>
                     <field name="tanggal"/>
+
                     <field name="kursus_id"/>
+
+                    <field name="session_id"/>
+
+                    <field name="instruktur_id"/>
+
+                    <field name="jml_peserta_hadir"/>
+
+                    <field name="state"/>
                 </list>
             </field>
         </record>
@@ -34,7 +43,9 @@
 
                             <field name="kursus_id"/>
 
-                            <field name="session_id"/>
+                            <field name="session_id" readonly="not kursus_id"/>
+
+                            <field name="instruktur_id" invisible="not session_id"/>
 
                             <field name="jml_peserta_hadir"/>
 

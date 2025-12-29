@@ -25,6 +25,7 @@ Aplikasi untuk mengelola kursus
         'security/groups.xml',
         'security/ir.model.access.csv',
         'data/ir_sequence_data.xml',
+        'data/ir_action_report_data.xml',
         'views/menu_kursus.xml',
         'views/views.xml',
         'views/templates.xml',
@@ -40,6 +41,9 @@ Aplikasi untuk mengelola kursus
         'views/pendaftaran.xml',
         'views/daftar_hadir.xml',
         'wizards/kursus_wizard.xml',
+        'reports/peserta-card.xml',
+        'reports/daftar-hadir-report.xml',
+        'reports/pendaftaran_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

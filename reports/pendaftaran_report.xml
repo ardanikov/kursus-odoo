@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_pendaftaran_content">
+            <div>
+                <div class="row mb-2">
+                    <div class="col-3">
+                        <img t-if="doc.env.company.logo" t-att-src="image_data_uri(doc.env.company.logo)" style="max-height: 60px;" alt="Logo"></img>
+                    </div>
+                    <div class="col-9 text-end">
+                        <h5 t-field="doc.env.company.name" class="m-0"></h5>
+                        <div class="small text-muted">
+                            <span t-field="doc.env.company.street"></span>
+                            <t t-if="doc.env.company.street2">
+                                ,
+                                <span t-field="doc.env.company.street2"></span>
+                            </t>
+                            <br></br>
+                            <span t-field="doc.env.company.city"></span>
+                            ,
+                            <span t-field="doc.env.company.state_id.name"></span>
+                            <span t-field="doc.env.company.zip"></span>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mb-3">
+                    <h6>BUKTI PENDAFTARAN KURSUS</h6>
+                    <h6>
+                        <span t-field="doc.name"></span>
+                    </h6>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6 me-2">
+                        <div style="border-bottom: 2px solid gray; margin-bottom: 15px;">
+                            <strong>INFORMASI PESERTA</strong>
+                        </div>
+                        <div>
+                            <div>
+                                Nama:
+                                <span t-field="doc.pendaftar_id.name"></span>
+                            </div>
+                            <div>
+                                Jenis Kelamin:
+                                <span t-field="doc.jenis_kelamin"></span>
+                            </div>
+                            <div>
+                                No. HP:
+                                <span t-field="doc.no_hp"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div style="border-bottom: 2px solid gray; margin-bottom: 15px;">
+                            <strong>INFORMASI PENDAFTARAN</strong>
+                        </div>
+                        <div>
+                            <div>
+                                Tanggal:
+                                <span t-field="doc.tanggal"></span>
+                            </div>
+                            <div>
+                                Kursus:
+                                <span t-field="doc.kursus_id.name"></span>
+                            </div>
+                            <div>
+                                Status Pembayaran:
+                                <span t-field="doc.status_pembayaran"></span>
+                            </div>
+                            <div>
+                                Total Biaya:
+                                <span t-field="doc.harga_kursus_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.currency_id}"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 85px;">
+                    <div class="col-6 text-center ">
+                        <span>(_______________________________)</span>
+                        <br></br>
+                        <span>Pendaftar</span>
+                    </div>
+                    <div class="col-6 text-center ">
+                        <span>(_______________________________)</span>
+                        <br></br>
+                        <span>Petugas</span>
+                    </div>
+                </div>
+
+
+                <div class="text-center mt-2" style="border-top: 1px solid #ccc; padding-top: 5px; font-size: 10px;">
+                    Dicetak
+                    pada:
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"></span>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_pendaftaran_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.basic_layout">
+                        <div class="page">
+                            <div style="height: 48%; position: relative; padding: 10px;">
+                                <t t-call="kursus.report_pendaftaran_content"></t>
+                            </div>
+                            <div style="height: 4%; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <div style="width: 100%; border-top: 2px dashed #999;"></div>
+                                <div style="position: absolute; background: white; padding: 0 10px; color: #666; font-size: 12px;">
+                                    <i class="fa fa-scissors"></i>
+                                    Potong di sini
+                                </div>
+                            </div>
+                            <div style="height: 48%; position: relative; padding: 10px;">
+                                <t t-call="kursus.report_pendaftaran_content"></t>
+                            </div>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
