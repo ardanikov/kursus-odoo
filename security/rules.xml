@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="pendaftaran_own_data_rule" model="ir.rule">
+            <field name="name">User Own Data</field>
+            <field name="model_id" ref="model_cdn_pendaftaran"/>
+            <field name="groups" eval="[Command.set([ref('group_training_user')])]"/>
+            <field name="domain_force">[('create_uid', '=', user.id)]</field>
+        </record>
+
+        <record id="pendaftaran_all_data_rule" model="ir.rule">
+            <field name="name">Manager All Data</field>
+            <field name="model_id" ref="model_cdn_pendaftaran"/>
+            <field name="groups" eval="[Command.set([ref('group_training_manager')])]"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+        </record>
+    </data>
+</odoo>

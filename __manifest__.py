@@ -23,6 +23,7 @@ Aplikasi untuk mengelola kursus
     # always loaded
     'data': [
         'security/groups.xml',
+        'security/rules.xml',
         'security/ir.model.access.csv',
         'data/ir_sequence_data.xml',
         'data/ir_action_report_data.xml',
