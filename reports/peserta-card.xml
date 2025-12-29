@@ -1,94 +1,106 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <template id="report_peserta_card">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
                     <t t-call="web.basic_layout">
-                        <div class="page">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div>
-                                        <div class="row" style="border-bottom: 2px solid #ddd;">
-                                            <div class="col-6">
-                                                <div>
-                                                    <h5 style="color: #2c3e50; font-weight: bold; font-size: 12px; margin-bottom: 0;">KARTU PESERTA</h5>
-                                                    <h6 t-field="doc.no_peserta" class="mb-1 mt-1" style="color: #7f8c8d; font-size: 10px; margin-bottom: 0;"/>
+                        <div class="page" style="position: absolute; top: 0; left: 0; width: 105mm; height: 64mm; background-image: url('/kursus/static/src/img/card-bg-resized.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                            <div class="p-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div>
+                                            <div class="row" style="border-bottom: 2px solid #81b7d6;">
+                                                <div class="col-6">
+                                                    <div>
+                                                        <h5 style="color: #2c3e50; font-weight: bold; font-size: 12px; margin-bottom: 0;">KARTU PESERTA</h5>
+                                                        <h6 t-field="doc.no_peserta" class="mb-1 mt-1" style="color: #7f8c8d; font-size: 10px; margin-bottom: 0;"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <t t-if="doc.env.company.logo">
+                                                        <img t-att-src="image_data_uri(doc.env.company.logo)" style="max-height: 40px; float: right;"/>
+                                                    </t>
+                                                    <t t-if="doc.env.company.street2">
+                                                        ,
+                                                        <span t-field="doc.env.company.street2"/>
+                                                    </t>
                                                 </div>
                                             </div>
-                                            <div class="col-6">
-                                                <t t-if="doc.env.company.logo">
-                                                    <img t-att-src="image_data_uri(doc.env.company.logo)" style="max-height: 40px; float: right;"/>
-                                                </t>
-                                                <t t-if="doc.env.company.street2">, <span t-field="doc.env.company.street2"/>
-                                            </t>
+
+                                            <div class="row">
+                                                <div class="col-9 mt-2">
+                                                    <table class="table table-sm table-borderless">
+                                                        <tr>
+                                                            <td style="font-size: 8px;">
+                                                                <strong>Nama</strong>
+                                                            </td>
+                                                            <td style="font-size: 8px;">
+                                                                :
+                                                                <span t-field="doc.name"/>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td style="font-size: 8px;">
+                                                                <strong>Alamat</strong>
+                                                            </td>
+                                                            <td style="font-size: 8px;">
+                                                                :
+                                                                <span t-field="doc.kecamatan_id.name"/>
+
+                                                                <span t-if="doc.kota_id.name">,</span>
+
+                                                                <span t-field="doc.kota_id.name"/>
+
+                                                                <span t-if="doc.provinsi_id.name">,</span>
+
+                                                                <span t-field="doc.provinsi_id.name"/>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td style="font-size: 8px;">
+                                                                <strong>No. HP</strong>
+                                                            </td>
+                                                            <td style="font-size: 8px;">
+                                                                :
+                                                                <span t-field="doc.mobile"/>
+                                                            </td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td style="font-size: 8px;">
+                                                                <strong>Jenis Kelamin</strong>
+                                                            </td>
+                                                            <td style="font-size: 8px;">
+                                                                :
+                                                                <span t-field="doc.jenis_kelamin"/>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+                                                <!-- Photo -->
+                                                <div class="col text-end mt-2">
+                                                    <img t-if="doc.profile_image" t-att-src="image_data_uri(doc.profile_image)" style="max-height: 100px; max-width: 100%;"/>
+                                                    <img t-else="" src="/web/static/img/placeholder.png" style="max-height: 100px; max-width: 100%;"/>
+                                                </div>
+                                            </div>
+
+                                            <!-- end row -->
+                                            <!-- Footer -->
+                                            <div class="text-center" style="font-size: 8px; color: #666; position: absolute; bottom: 2mm; left: 0; width: 100%;">
+                                                <p>Kartu ini adalah bukti keanggotaan peserta kursus.</p>
+                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="col-9 mt-2">
-                                            <table class="table table-sm table-borderless">
-                                                <tr>
-                                                    <td style="font-size: 8px;">
-                                                        <strong>Nama</strong>
-                                                    </td>
-                                                    <td style="font-size: 8px;">: <span t-field="doc.name"/>
-                                                </td>
-                                            </tr>
-
-                                            <tr>
-                                                <td style="font-size: 8px;">
-                                                    <strong>Alamat</strong>
-                                                </td>
-                                                <td style="font-size: 8px;">: <span t-field="doc.kecamatan_id.name"/>
-
-                                                <span t-if="doc.kota_id.name">,</span>
-
-                                                <span t-field="doc.kota_id.name"/>
-
-                                                <span t-if="doc.provinsi_id.name">,</span>
-
-                                                <span t-field="doc.provinsi_id.name"/>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td style="font-size: 8px;">
-                                                <strong>No. HP</strong>
-                                            </td>
-                                            <td style="font-size: 8px;">: <span t-field="doc.mobile"/>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td style="font-size: 8px;">
-                                            <strong>Jenis Kelamin</strong>
-                                        </td>
-                                        <td style="font-size: 8px;">: <span t-field="doc.jenis_kelamin"/>
-                                    </td>
-                                </tr>
-                            </table>
+                                </div>
+                            </div>
                         </div>
-
-                        <!-- Photo -->
-                        <div class="col text-end mt-2">
-                            <img t-if="doc.profile_image" t-att-src="image_data_uri(doc.profile_image)" style="max-height: 100px; max-width: 100%;"/>
-                            <img t-else="" src="/web/static/img/placeholder.png" style="max-height: 100px; max-width: 100%;"/>
-                        </div>
-                    </div>
-
-                    <!-- end row -->
-                    <!-- Footer -->
-                    <div class="text-center mt-4" style="font-size: 8px; color: #666;">
-                        <p>Kartu ini adalah bukti keanggotaan peserta kursus.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</t>
-</t>
-</t>
-</template>
-</data>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
 </odoo>
