@@ -84,7 +84,7 @@
                                                 <!-- Photo -->
                                                 <div class="col text-end mt-2">
                                                     <img t-if="doc.profile_image" t-att-src="image_data_uri(doc.profile_image)" style="max-height: 100px; max-width: 100%;"/>
-                                                    <img t-else="" src="/web/static/img/placeholder.png" style="max-height: 100px; max-width: 100%;"/>
+                                                    <img t-else="" src="url('https://placehold.co/600x400')" style="max-height: 100px; max-width: 100%;"/>
                                                 </div>
                                             </div>
 
