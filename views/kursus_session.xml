@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <!-- List View -->
@@ -20,6 +20,8 @@
                     <field name="seats" string="Peserta"/>
 
                     <field name="state" string="Status"/>
+
+                    <field name="create_uid" string="Pembuat" groups="kursus.group_training_manager"/>
                 </list>
             </field>
         </record>
@@ -52,6 +54,8 @@
                                 <field name="name" string="Pokok Bahasan" readonly="state != 'draft'"/>
 
                                 <field name="kursus_id" readonly="state != 'draft'"/>
+
+                                <field name="create_uid" string="Pembuat" groups="kursus.group_training_manager"/>
                             </group>
                             <group>
                                 <field name="duration" string="Durasi (jam)" readonly="state != 'draft'"/>

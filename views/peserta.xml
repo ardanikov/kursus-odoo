@@ -17,6 +17,8 @@
                     <field name="mobile" string="No. HP"/>
 
                     <field name="email"/>
+
+                    <field name="create_uid" string="Pembuat" groups="kursus.group_training_manager"/>
                 </list>
             </field>
         </record>

@@ -1,93 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <record id="pendaftaran_own_data_rule" model="ir.rule">
+
+        <record id="pendaftaran_own_data_rule_user" model="ir.rule">
             <field name="name">User Own Data</field>
             <field name="model_id" ref="model_cdn_pendaftaran"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_data_sendiri')])]"/>
+            <field name="groups" eval="[Command.set([ref('group_training_user')])]"/>
             <field name="domain_force">[('create_uid', '=', user.id)]</field>
         </record>
 
-        <record id="pendaftaran_all_data_rule" model="ir.rule">
+        <record id="pendaftaran_all_data_rule_manager" model="ir.rule">
             <field name="name">Manage All Data</field>
             <field name="model_id" ref="model_cdn_pendaftaran"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_semua_data')])]"/>
+            <field name="groups" eval="[Command.set([ref('group_training_manager')])]"/>
             <field name="domain_force">[(1, '=', 1)]</field>
         </record>
 
-        <!-- Rules for Kursus -->
-        <record id="kursus_own_data_rule" model="ir.rule">
-            <field name="name">User Own Data Kursus</field>
-            <field name="model_id" ref="model_cdn_kursus"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_data_sendiri')])]"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
-        </record>
-
-        <record id="kursus_all_data_rule" model="ir.rule">
-            <field name="name">Manage All Data Kursus</field>
-            <field name="model_id" ref="model_cdn_kursus"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_semua_data')])]"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-        </record>
-
-        <!-- Rules for Kursus Session -->
-        <record id="kursus_session_own_data_rule" model="ir.rule">
-            <field name="name">User Own Data Kursus Session</field>
-            <field name="model_id" ref="model_cdn_kursus_session"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_data_sendiri')])]"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
-        </record>
-
-        <record id="kursus_session_all_data_rule" model="ir.rule">
-            <field name="name">Manage All Data Kursus Session</field>
-            <field name="model_id" ref="model_cdn_kursus_session"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_semua_data')])]"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-        </record>
-
-        <!-- Rules for Peserta -->
-        <record id="peserta_own_data_rule" model="ir.rule">
-            <field name="name">User Own Data Peserta</field>
-            <field name="model_id" ref="model_cdn_peserta"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_data_sendiri')])]"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
-        </record>
-
-        <record id="peserta_all_data_rule" model="ir.rule">
-            <field name="name">Manage All Data Peserta</field>
-            <field name="model_id" ref="model_cdn_peserta"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_semua_data')])]"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-        </record>
-
-        <!-- Rules for Instruktur -->
-        <record id="instruktur_own_data_rule" model="ir.rule">
-            <field name="name">User Own Data Instruktur</field>
-            <field name="model_id" ref="model_cdn_instruktur"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_data_sendiri')])]"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
-        </record>
-
-        <record id="instruktur_all_data_rule" model="ir.rule">
-            <field name="name">Manage All Data Instruktur</field>
-            <field name="model_id" ref="model_cdn_instruktur"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_semua_data')])]"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-        </record>
-
-        <!-- Rules for Daftar Hadir -->
-        <record id="daftar_hadir_own_data_rule" model="ir.rule">
-            <field name="name">User Own Data Daftar Hadir</field>
-            <field name="model_id" ref="model_cdn_daftar_hadir"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_data_sendiri')])]"/>
-            <field name="domain_force">[('create_uid', '=', user.id)]</field>
-        </record>
-
-        <record id="daftar_hadir_all_data_rule" model="ir.rule">
-            <field name="name">Manage All Data Daftar Hadir</field>
-            <field name="model_id" ref="model_cdn_daftar_hadir"/>
-            <field name="groups" eval="[Command.set([ref('group_training_lihat_semua_data')])]"/>
-            <field name="domain_force">[(1, '=', 1)]</field>
-        </record>
     </data>
 </odoo>
