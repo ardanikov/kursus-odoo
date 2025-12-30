@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+
+        <!-- ROOT -->
         <record id="training_group" model="ir.module.category">
             <field name="name">Modul Training Odoo</field>
         </record>
 
-        <record id="fitur_training_group" model="ir.module.category">
-            <field name="name">Fitur Training Odoo</field>
+        <record id="group_training_manager" model="res.groups">
+            <field name="name">Training Manager</field>
+            <field name="category_id" ref="training_group"/>
+            <field name="implied_ids" eval="[(4, ref('group_training_user'))]"/>
         </record>
 
         <record id="group_training_user" model="res.groups">
@@ -14,19 +18,25 @@
             <field name="category_id" ref="training_group"/>
         </record>
 
+
+        <!-- FITUR -->
+        <record id="fitur_training_group" model="ir.module.category">
+            <field name="name">Fitur Training Odoo</field>
+        </record>
+
         <record id="group_training_reset_data" model="res.groups">
-            <field name="name">Reset Data</field>
+            <field name="name">Dapat Reset Data</field>
             <field name="category_id" ref="fitur_training_group"/>
         </record>
 
-        <record id="group_training_manager" model="res.groups">
-            <field name="name">Training Manager</field>
+        <record id="group_training_lihat_data_sendiri" model="res.groups">
+            <field name="name">Lihat Data Sendiri</field>
+            <field name="category_id" ref="fitur_training_group"/>
+        </record>
 
-            <field name="category_id" ref="training_group"/>
-
-            <field name="implied_ids" eval="[(4, ref('group_training_user'))]"/>
-
-            <field name="comment">Only manager can see all data</field>
+        <record id="group_training_lihat_semua_data" model="res.groups">
+            <field name="name">Lihat Semua Data</field>
+            <field name="category_id" ref="fitur_training_group"/>
         </record>
 
     </data>
